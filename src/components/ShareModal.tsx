@@ -63,21 +63,21 @@ export function ShareModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="share-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#49363A]/45 p-4 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#543E43]/35 p-4 backdrop-blur-xs"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="w-full max-w-md rounded-3xl border-2 border-[#49363A]/20 bg-[#FFF7F0] p-6 shadow-2xl">
+      <div className="w-full max-w-md rounded-3xl border border-[#E5BBC6]/70 bg-[#FFFCFA] p-6 shadow-2xl">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h2
               id="share-modal-title"
-              className="font-display text-2xl font-extrabold text-[#49363A]"
+              className="font-display text-2xl font-extrabold text-[#8F4A5B]"
             >
               Rủ thêm bạn bè
             </h2>
-            <p className="mt-1 text-sm text-[#6E565B]">
+            <p className="mt-1 text-sm text-[#7A5E64]">
               Chia sẻ đường dẫn để mọi người cùng góp một chiếc thương nha!
             </p>
           </div>
@@ -85,26 +85,26 @@ export function ShareModal({
             type="button"
             onClick={onClose}
             aria-label="Đóng lại"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#B87983]/30 bg-[#F8E4E8] text-[#49363A] hover:bg-[#F3D5DD]"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[#E5BBC6]/60 bg-[#FDF1F4] text-[#543E43] hover:bg-[#FCEBF0]"
           >
             <X className="h-4.5 w-4.5" />
           </button>
         </div>
 
         {/* Copyable Link Box */}
-        <div className="mt-5 flex items-center gap-2 rounded-2xl border border-[#B87983]/40 bg-[#FFFFFF] p-2">
+        <div className="mt-5 flex items-center gap-2 rounded-2xl border border-[#E5BBC6]/80 bg-[#FFFFFF] p-2">
           <input
             type="text"
             readOnly
             value={shareUrl}
-            aria-label="Đường dẫn bức tường lưu bút"
+            aria-label="Đường dẫn bức tường"
             onFocus={(e) => e.currentTarget.select()}
-            className="min-w-0 flex-1 bg-transparent px-2 text-xs sm:text-sm font-semibold text-[#49363A] focus:outline-none"
+            className="min-w-0 flex-1 bg-transparent px-2 text-xs sm:text-sm font-semibold text-[#543E43] focus:outline-none"
           />
           <button
             type="button"
             onClick={handleCopy}
-            className="inline-flex min-h-10 items-center gap-1.5 rounded-xl bg-[#E8B6C2] px-3.5 py-2 text-xs sm:text-sm font-extrabold text-[#49363A] hover:bg-[#DFA3B2] transition-colors whitespace-nowrap shrink-0"
+            className="inline-flex min-h-10 items-center gap-1.5 rounded-xl bg-[#F5C7D4] px-3.5 py-2 text-xs sm:text-sm font-extrabold text-[#543E43] hover:bg-[#EEB5C5] transition-colors whitespace-nowrap shrink-0"
           >
             {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
             {copied ? 'Đã sao chép' : 'Sao chép'}
@@ -112,7 +112,7 @@ export function ShareModal({
         </div>
 
         {copied && (
-          <p className="mt-2.5 text-center text-sm font-bold text-[#8A4A56]">
+          <p className="mt-2.5 text-center text-sm font-bold text-[#964E60]">
             Đã sao chép đường dẫn rồi nha!
           </p>
         )}
@@ -122,7 +122,7 @@ export function ShareModal({
             <button
               type="button"
               onClick={handleNativeShare}
-              className="flex-1 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#49363A] bg-[#E8B6C2] px-4 py-2.5 text-sm font-extrabold text-[#49363A] shadow-[0_2px_0_#49363A] hover:bg-[#E1A6B5]"
+              className="flex-1 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#D493A3] bg-[#F5C7D4] px-4 py-2.5 text-sm font-extrabold text-[#543E43] shadow-xs hover:bg-[#EEB5C5]"
             >
               <Share2 className="h-4 w-4" />
               Chia sẻ nhanh
@@ -131,7 +131,7 @@ export function ShareModal({
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 min-h-11 rounded-xl border border-[#B87983]/40 bg-[#F8E4E8]/70 px-4 py-2.5 text-sm font-bold text-[#49363A] hover:bg-[#F3D5DD]"
+            className="flex-1 min-h-11 rounded-xl border border-[#E2BAC5] bg-[#FDF1F4] px-4 py-2.5 text-sm font-bold text-[#543E43] hover:bg-[#FCEBF0]"
           >
             Đóng lại
           </button>

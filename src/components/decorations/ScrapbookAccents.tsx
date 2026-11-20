@@ -7,10 +7,10 @@ interface WashiTapeProps {
 }
 
 const TAPE_TONE_CLASSES = {
-  rose: 'bg-[#E8B6C2]/80 border-[#B87983]/30',
-  lavender: 'bg-[#D7C9EA]/85 border-[#9B87B8]/30',
-  sky: 'bg-[#C7DFEA]/85 border-[#7FA8BC]/30',
-  butter: 'bg-[#F5DFAA]/85 border-[#C7A75E]/30',
+  rose: 'bg-[#F6C8D6]/80 border-[#DF9DAE]/30',
+  lavender: 'bg-[#E3D7F5]/85 border-[#B9A4D8]/30',
+  sky: 'bg-[#D6EAF4]/85 border-[#9AC0D4]/30',
+  butter: 'bg-[#FBE9BE]/85 border-[#DBC07D]/30',
 };
 
 export function WashiTape({ styleType, tone = 'rose', className = '' }: WashiTapeProps) {

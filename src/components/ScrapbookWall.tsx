@@ -145,7 +145,7 @@ export function ScrapbookWall({
       className="mx-auto max-w-7xl px-4 pt-4 pb-20 sm:px-6 lg:px-8"
     >
       {/* Section Header */}
-      <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between border-b border-[#B87983]/25 pb-6">
+      <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between border-b border-[#E2B5C1]/45 pb-6">
         <div>
           <h2
             id="wall-heading"
@@ -153,12 +153,12 @@ export function ScrapbookWall({
           >
             Góc này toàn điều dễ thương ♡
           </h2>
-          <div className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm text-[#6E565B]">
+          <div className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm text-[#7A5E64]">
             <span>Những lời nhắn và khoảnh khắc nhà mình gửi lại.</span>
-            <span aria-hidden="true" className="text-[#B87983]">
+            <span aria-hidden="true" className="text-[#D497A6]">
               ·
             </span>
-            <span className="font-bold text-[#49363A] tabular-nums">
+            <span className="font-bold text-[#543E43] tabular-nums">
               {posts.length} lời nhắn
             </span>
           </div>
@@ -168,9 +168,9 @@ export function ScrapbookWall({
           <button
             type="button"
             onClick={onOpenShare}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#B87983]/45 bg-[#FFF7F0] px-4 py-2 text-sm font-bold text-[#49363A] hover:bg-[#F3D5DD]/60 transition-colors whitespace-nowrap"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#E2BAC5] bg-[#FFFFFF] px-4 py-2 text-sm font-bold text-[#543E43] hover:bg-[#FCEBF0] transition-colors whitespace-nowrap"
           >
-            <Share2 className="h-4 w-4 text-[#9E5D68]" />
+            <Share2 className="h-4 w-4 text-[#B06376]" />
             Rủ thêm bạn bè
           </button>
 
@@ -178,7 +178,7 @@ export function ScrapbookWall({
             type="button"
             onClick={onOpenForm}
             disabled={!isOpen}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#49363A] bg-[#E8B6C2] px-4 py-2 text-sm font-extrabold text-[#49363A] shadow-[0_3px_0_#49363A] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#E1A6B5] active:translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-55 whitespace-nowrap"
+            className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#D493A3] bg-[#F5C7D4] px-4 py-2 text-sm font-extrabold text-[#543E43] shadow-[0_4px_12px_-3px_rgba(201,126,144,0.4)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#EEB5C5] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-55 whitespace-nowrap"
           >
             <PenLine className="h-4 w-4" />
             Gửi thêm một chiếc thương
@@ -190,7 +190,7 @@ export function ScrapbookWall({
       {posts.length > 0 && (
         <div
           role="tablist"
-          aria-label="Lọc theo kiểu thẻ lưu bút"
+          aria-label="Lọc theo kiểu thẻ"
           className="mb-8 flex items-center gap-1.5 overflow-x-auto pb-1"
         >
           {FILTER_OPTIONS.map((opt) => {
@@ -202,10 +202,10 @@ export function ScrapbookWall({
                 role="tab"
                 aria-selected={active}
                 onClick={() => setActiveFilter(opt.key)}
-                className={`min-h-10 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#49363A] ${
+                className={`min-h-10 rounded-xl px-4 py-2 text-xs sm:text-sm font-bold transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A5164] ${
                   active
-                    ? 'bg-[#49363A] text-[#FFF7F0]'
-                    : 'bg-[#FFF7F0]/85 text-[#49363A]/80 border border-[#B87983]/25 hover:bg-[#FFF7F0] hover:text-[#49363A]'
+                    ? 'bg-[#9A5164] text-[#FFFFFF] shadow-xs'
+                    : 'bg-[#FFFFFF]/90 text-[#664C52] border border-[#E6C0CA]/60 hover:bg-[#FFFFFF] hover:text-[#543E43]'
                 }`}
               >
                 {opt.label}
@@ -221,13 +221,13 @@ export function ScrapbookWall({
           {Array.from({ length: 4 }).map((_, i) => (
             <div
               key={i}
-              className="h-64 animate-pulse rounded-2xl border border-[#B87983]/20 bg-[#FFF7F0]/80 p-5"
+              className="h-64 animate-pulse rounded-2xl border border-[#E6C0CA]/40 bg-[#FFFCFA]/90 p-5"
             >
-              <div className="h-4 w-24 rounded bg-[#F3D5DD]" />
+              <div className="h-4 w-24 rounded bg-[#FCEBF0]" />
               <div className="mt-4 space-y-2.5">
-                <div className="h-3.5 w-full rounded bg-[#F3D5DD]/70" />
-                <div className="h-3.5 w-5/6 rounded bg-[#F3D5DD]/70" />
-                <div className="h-3.5 w-2/3 rounded bg-[#F3D5DD]/70" />
+                <div className="h-3.5 w-full rounded bg-[#FCEBF0]/80" />
+                <div className="h-3.5 w-5/6 rounded bg-[#FCEBF0]/80" />
+                <div className="h-3.5 w-2/3 rounded bg-[#FCEBF0]/80" />
               </div>
             </div>
           ))}
@@ -236,15 +236,15 @@ export function ScrapbookWall({
 
       {/* Error State */}
       {!loading && error && (
-        <div className="mx-auto max-w-lg rounded-3xl border border-[#B87983]/35 bg-[#FFF7F0] p-8 text-center scrapbook-shadow">
-          <p className="font-display text-xl font-bold text-[#49363A]">
+        <div className="mx-auto max-w-lg rounded-3xl border border-[#E5BBC6]/60 bg-[#FFFCFA] p-8 text-center scrapbook-shadow">
+          <p className="font-display text-xl font-bold text-[#543E43]">
             Chưa tải được bức tường lúc này
           </p>
-          <p className="mt-2 text-sm text-[#6E565B]">{error}</p>
+          <p className="mt-2 text-sm text-[#7A5E64]">{error}</p>
           <button
             type="button"
             onClick={onRetry}
-            className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl border border-[#49363A] bg-[#E8B6C2] px-5 py-2.5 text-sm font-bold text-[#49363A] hover:bg-[#DFA3B2]"
+            className="mt-5 inline-flex min-h-11 items-center justify-center rounded-xl border border-[#D493A3] bg-[#F5C7D4] px-5 py-2.5 text-sm font-bold text-[#543E43] hover:bg-[#EEB5C5]"
           >
             Thử tải lại nha
           </button>
@@ -253,21 +253,21 @@ export function ScrapbookWall({
 
       {/* SCREEN 5 — EMPTY WALL */}
       {!loading && !error && posts.length === 0 && (
-        <div className="mx-auto max-w-xl rounded-3xl border border-[#B87983]/30 bg-[#FFF7F0] px-6 py-12 text-center scrapbook-shadow">
+        <div className="mx-auto max-w-xl rounded-3xl border border-[#E5BBC6]/55 bg-[#FFFCFA] px-6 py-12 text-center scrapbook-shadow">
           <div className="relative mx-auto mb-4 flex w-fit items-center justify-center">
-            <PastelFlower className="absolute -left-8 top-4 h-7 w-7 opacity-80" petalColor="#F3D5DD" />
+            <PastelFlower className="absolute -left-8 top-4 h-7 w-7 opacity-85" petalColor="#F9D5DF" />
             <ChibiAngel variant="waving" className="h-32 w-28" />
-            <PastelFlower className="absolute -right-8 bottom-3 h-7 w-7 opacity-80" petalColor="#E6DDF1" />
+            <PastelFlower className="absolute -right-8 bottom-3 h-7 w-7 opacity-85" petalColor="#EFE8FA" />
           </div>
 
           <h3
-            className="font-display text-2xl sm:text-3xl font-extrabold text-[#49363A]"
+            className="font-display text-2xl sm:text-3xl font-extrabold text-[#543E43]"
             style={{ textWrap: 'balance' }}
           >
             Góc nhỏ này vẫn đang chờ những chiếc thương đầu tiên!
           </h3>
 
-          <p className="mt-2.5 text-base text-[#6E565B]">
+          <p className="mt-2.5 text-base text-[#7A5E64]">
             Nhà mình mở hàng bằng một lời nhắn nha?
           </p>
 
@@ -275,7 +275,7 @@ export function ScrapbookWall({
             type="button"
             onClick={onOpenForm}
             disabled={!isOpen}
-            className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border-2 border-[#49363A] bg-[#E8B6C2] px-6 py-3 text-base font-extrabold text-[#49363A] shadow-[0_4px_0_#49363A] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#E1A6B5] disabled:cursor-not-allowed disabled:opacity-55"
+            className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-[#D493A3] bg-[#F5C7D4] px-6 py-3 text-base font-extrabold text-[#543E43] shadow-[0_4px_14px_-3px_rgba(201,126,144,0.45)] transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#EEB5C5] disabled:cursor-not-allowed disabled:opacity-55"
           >
             <PenLine className="h-4.5 w-4.5" />
             Gửi chiếc thương đầu tiên
@@ -285,14 +285,14 @@ export function ScrapbookWall({
 
       {/* Empty filtered category state */}
       {!loading && !error && posts.length > 0 && filteredPosts.length === 0 && (
-        <div className="mx-auto max-w-md rounded-2xl border border-[#B87983]/25 bg-[#FFF7F0] px-6 py-10 text-center">
-          <p className="font-display text-lg font-bold text-[#49363A]">
+        <div className="mx-auto max-w-md rounded-2xl border border-[#E6C0CA]/50 bg-[#FFFCFA] px-6 py-10 text-center">
+          <p className="font-display text-lg font-bold text-[#543E43]">
             Chưa có lời nhắn nào thuộc kiểu thẻ này nha!
           </p>
           <button
             type="button"
             onClick={() => setActiveFilter('all')}
-            className="mt-4 inline-flex min-h-10 items-center justify-center rounded-xl bg-[#F3D5DD] px-4 py-2 text-sm font-bold text-[#49363A] hover:bg-[#E8B6C2]"
+            className="mt-4 inline-flex min-h-10 items-center justify-center rounded-xl bg-[#FCEBF0] px-4 py-2 text-sm font-bold text-[#543E43] hover:bg-[#F5C7D4]"
           >
             Xem lại tất cả lời nhắn
           </button>

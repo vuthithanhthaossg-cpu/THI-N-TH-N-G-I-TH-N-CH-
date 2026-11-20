@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-blush: #F8E4E8;
-  --color-dusty-rose: #E8B6C2;
-  --color-cream: #FFF7F0;
-  --color-soft-pink: #F3D5DD;
-  --color-lavender: #E6DDF1;
-  --color-soft-blue: #DDEBF1;
-  --color-cocoa: #49363A;
-  --color-rose-accent: #B87983;
+  --color-blush: #FDF1F4;
+  --color-dusty-rose: #F5C7D4;
+  --color-cream: #FFFCFA;
+  --color-soft-pink: #FCEBF0;
+  --color-lavender: #F1EBF9;
+  --color-soft-blue: #EBF4F9;
+  --color-cocoa: #543E43;
+  --color-rose-accent: #C98A98;
 
   --font-display: "Baloo 2", system-ui, sans-serif;
   --font-sans: "Nunito", system-ui, -apple-system, sans-serif;
@@ -19,16 +19,16 @@
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
-    color: #49363A;
-    background-color: #F8E4E8;
+    color: #543E43;
+    background-color: #FDF1F4;
   }
 
   body {
     overflow-x: hidden;
-    background-color: #F8E4E8;
+    background-color: #FDF1F4;
     background-image:
-      radial-gradient(rgba(184, 121, 131, 0.14) 1px, transparent 1px),
-      radial-gradient(rgba(232, 182, 194, 0.25) 1px, transparent 1px);
+      radial-gradient(rgba(209, 146, 161, 0.14) 1px, transparent 1px),
+      radial-gradient(rgba(245, 199, 212, 0.3) 1px, transparent 1px);
     background-size: 26px 26px;
     background-position: 0 0, 13px 13px;
   }
@@ -39,41 +39,41 @@
   }
 }
 
-/* Signature outlined pastel heading inspired by Reference 1 */
+/* Signature outlined pastel heading — bright airy blush pink */
 .angel-title-outline {
   font-family: var(--font-display);
-  color: #F7B8C8;
-  -webkit-text-stroke: 2px #49363A;
+  color: #FBC7D6;
+  -webkit-text-stroke: 1.8px #6A4B53;
   paint-order: stroke fill;
   text-shadow:
-    0 3px 0 #49363A,
-    0 6px 14px rgba(184, 121, 131, 0.26);
+    0 2.5px 0 #7C5861,
+    0 8px 18px rgba(209, 138, 156, 0.24);
 }
 
 .angel-heading-soft {
   font-family: var(--font-display);
-  color: #49363A;
-  text-shadow: 0 2px 0 rgba(232, 182, 194, 0.65);
+  color: #543E43;
+  text-shadow: 0 2px 0 rgba(245, 199, 212, 0.65);
 }
 
 /* Subtle ruled stationery lines for Love Letter cards */
 .stationery-lined {
-  background-color: #FFF7F0;
+  background-color: #FFFCFA;
   background-image: repeating-linear-gradient(
     to bottom,
     transparent 0px,
     transparent 29px,
-    rgba(184, 121, 131, 0.17) 29px,
-    rgba(184, 121, 131, 0.17) 30px
+    rgba(209, 146, 161, 0.17) 29px,
+    rgba(209, 146, 161, 0.17) 30px
   );
   background-position: 0 8px;
 }
 
-/* Subtle tactile paper shadow */
+/* Soft airy scrapbook paper shadow */
 .scrapbook-shadow {
   box-shadow:
-    0 6px 18px -6px rgba(73, 54, 58, 0.12),
-    0 2px 5px -2px rgba(73, 54, 58, 0.08);
+    0 8px 24px -8px rgba(154, 96, 110, 0.12),
+    0 2px 6px -2px rgba(154, 96, 110, 0.06);
 }
 
 .scrapbook-shadow-hover {
@@ -82,30 +82,30 @@
 
 .scrapbook-shadow-hover:hover {
   box-shadow:
-    0 14px 28px -10px rgba(73, 54, 58, 0.17),
-    0 4px 10px -4px rgba(73, 54, 58, 0.1);
+    0 16px 32px -10px rgba(154, 96, 110, 0.18),
+    0 4px 10px -4px rgba(154, 96, 110, 0.09);
 }
 
 /* Washi tape textures */
 .washi-striped {
   background-image: repeating-linear-gradient(
     -45deg,
-    rgba(255, 255, 255, 0.45) 0px,
-    rgba(255, 255, 255, 0.45) 6px,
+    rgba(255, 255, 255, 0.55) 0px,
+    rgba(255, 255, 255, 0.55) 6px,
     transparent 6px,
     transparent 12px
   );
 }
 
 .washi-dots {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.72) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.8) 1.5px, transparent 1.5px);
   background-size: 9px 9px;
 }
 
 .washi-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.48) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.48) 1px, transparent 1px);
   background-size: 8px 8px;
 }
 

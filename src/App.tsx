@@ -159,7 +159,7 @@ export default function App() {
     : null;
 
   return (
-    <div className="min-h-screen flex flex-col text-[#49363A]">
+    <div className="min-h-screen flex flex-col text-[#543E43]">
       {route.view === 'admin' ? (
         <AdminDashboard
           initialWallId={route.wallId}
@@ -201,26 +201,26 @@ export default function App() {
           </main>
 
           {/* Clean quiet footer */}
-          <footer className="border-t border-[#B87983]/20 bg-[#FFF7F0]/75 py-6">
-            <div className="mx-auto flex max-w-6xl flex-col sm:flex-row items-center justify-between gap-3 px-4 sm:px-6 text-xs sm:text-sm text-[#6E565B]">
-              <p className="font-semibold text-[#49363A]">
-                THIÊN THẦN GỬI THÂN CHỦ · Một góc nhỏ dành riêng cho nhà mình Nam Hòa
+          <footer className="border-t border-[#E6C0CA]/45 bg-[#FFFCFA]/85 py-6">
+            <div className="mx-auto flex max-w-6xl flex-col sm:flex-row items-center justify-between gap-3 px-4 sm:px-6 text-xs sm:text-sm text-[#7A5E64]">
+              <p className="font-semibold text-[#543E43]">
+                THIÊN THẦN GỬI THÂN CHỦ · Lưu xá Nam Hòa
               </p>
               <div className="flex items-center gap-4">
                 <button
                   type="button"
                   onClick={() => setShareOpen(true)}
-                  className="font-semibold hover:text-[#49363A] underline-offset-4 hover:underline"
+                  className="font-semibold hover:text-[#543E43] underline-offset-4 hover:underline"
                 >
                   Rủ thêm bạn bè
                 </button>
-                <span aria-hidden="true" className="text-[#B87983]/50">
+                <span aria-hidden="true" className="text-[#D8A5B1]">
                   ·
                 </span>
                 <button
                   type="button"
                   onClick={() => navigateTo('/admin')}
-                  className="font-semibold hover:text-[#49363A] underline-offset-4 hover:underline"
+                  className="font-semibold hover:text-[#543E43] underline-offset-4 hover:underline"
                 >
                   Quản lý bức tường
                 </button>
@@ -272,7 +272,7 @@ export default function App() {
         <div
           role="status"
           aria-live="polite"
-          className="fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 rounded-2xl border border-[#49363A]/20 bg-[#49363A] px-5 py-3 text-sm font-bold text-[#FFF7F0] shadow-xl max-w-[90vw] text-center"
+          className="fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 rounded-2xl border border-[#E5BBC6]/60 bg-[#6A4B53] px-5 py-3 text-sm font-bold text-[#FFFFFF] shadow-xl max-w-[90vw] text-center"
         >
           {toast}
         </div>

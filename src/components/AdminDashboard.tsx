@@ -273,7 +273,7 @@ export function AdminDashboard({
   if (checkingAuth) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4">
-        <p className="font-semibold text-[#49363A]">Đang kiểm tra phiên quản trị...</p>
+        <p className="font-semibold text-[#543E43]">Đang kiểm tra phiên quản trị...</p>
       </div>
     );
   }
@@ -282,13 +282,13 @@ export function AdminDashboard({
   if (!token) {
     return (
       <div className="min-h-screen flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md rounded-3xl border-2 border-[#49363A]/20 bg-[#FFF7F0] p-7 sm:p-8 scrapbook-shadow">
+        <div className="w-full max-w-md rounded-3xl border-2 border-[#49363A]/20 bg-[#FFFCFA] p-7 sm:p-8 scrapbook-shadow">
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#F3D5DD] text-[#49363A]">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#FCEBF0] text-[#543E43]">
               <ShieldCheck className="h-6 w-6" />
             </span>
             <div>
-              <h1 className="font-display text-2xl font-extrabold text-[#49363A]">
+              <h1 className="font-display text-2xl font-extrabold text-[#543E43]">
                 Quản lý bức tường lưu bút
               </h1>
               <p className="text-xs font-semibold text-[#8B636B]">
@@ -301,7 +301,7 @@ export function AdminDashboard({
             <div>
               <label
                 htmlFor="admin-password"
-                className="block text-sm font-bold text-[#49363A]"
+                className="block text-sm font-bold text-[#543E43]"
               >
                 Mật khẩu quản trị
               </label>
@@ -312,7 +312,7 @@ export function AdminDashboard({
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Nhập mật khẩu quản trị..."
                 autoFocus
-                className="mt-1.5 w-full min-h-11 rounded-xl border border-[#B87983]/50 bg-[#FFFFFF] px-4 py-2.5 text-base text-[#49363A] focus:border-[#49363A] focus:outline-none focus:ring-2 focus:ring-[#E8B6C2]"
+                className="mt-1.5 w-full min-h-11 rounded-xl border border-[#E5BBC6]/50 bg-[#FFFFFF] px-4 py-2.5 text-base text-[#543E43] focus:border-[#49363A] focus:outline-none focus:ring-2 focus:ring-[#E8B6C2]"
               />
             </div>
 
@@ -328,7 +328,7 @@ export function AdminDashboard({
             <button
               type="submit"
               disabled={loggingIn || !password.trim()}
-              className="w-full min-h-12 rounded-2xl border-2 border-[#49363A] bg-[#E8B6C2] px-5 py-2.5 text-base font-extrabold text-[#49363A] shadow-[0_3px_0_#49363A] hover:bg-[#E1A6B5] disabled:opacity-55"
+              className="w-full min-h-12 rounded-2xl border border-[#D493A3] bg-[#F5C7D4] px-5 py-2.5 text-base font-extrabold text-[#543E43] shadow-[0_4px_14px_-3px_rgba(201,126,144,0.45)] hover:bg-[#EEB5C5] disabled:opacity-55"
             >
               {loggingIn ? 'Đang xác thực...' : 'Đăng nhập quản trị'}
             </button>
@@ -336,7 +336,7 @@ export function AdminDashboard({
             <button
               type="button"
               onClick={() => onNavigateWall(activeWallId)}
-              className="w-full inline-flex min-h-10 items-center justify-center gap-1.5 text-sm font-bold text-[#6E565B] hover:text-[#49363A]"
+              className="w-full inline-flex min-h-10 items-center justify-center gap-1.5 text-sm font-bold text-[#6E565B] hover:text-[#543E43]"
             >
               <ArrowLeft className="h-4 w-4" />
               Quay về bức tường công khai
@@ -350,19 +350,19 @@ export function AdminDashboard({
   return (
     <div className="min-h-screen pb-16">
       {/* Top Admin Header */}
-      <header className="sticky top-0 z-30 border-b border-[#B87983]/25 bg-[#FFF7F0]/95 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-[#E5BBC6]/25 bg-[#FFFCFA]/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-3.5 sm:px-6">
           <div className="flex items-center gap-3 min-w-0">
             <button
               type="button"
               onClick={() => onNavigateWall(activeWallId)}
               aria-label="Về bức tường công khai"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#B87983]/35 bg-[#F8E4E8] text-[#49363A] hover:bg-[#F3D5DD] shrink-0"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#E5BBC6]/35 bg-[#FDF1F4] text-[#543E43] hover:bg-[#FCEBF0] shrink-0"
             >
               <ArrowLeft className="h-4.5 w-4.5" />
             </button>
             <div className="min-w-0">
-              <h1 className="font-display text-lg sm:text-xl font-extrabold text-[#49363A] truncate">
+              <h1 className="font-display text-lg sm:text-xl font-extrabold text-[#543E43] truncate">
                 Quản lý bức tường lưu bút
               </h1>
               <p className="text-xs font-semibold text-[#8B636B] truncate">
@@ -375,7 +375,7 @@ export function AdminDashboard({
             <button
               type="button"
               onClick={handleCopyWallLink}
-              className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[#B87983]/45 bg-[#FFF7F0] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#49363A] hover:bg-[#F8E4E8] whitespace-nowrap"
+              className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[#E5BBC6]/45 bg-[#FFFCFA] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#543E43] hover:bg-[#FDF1F4] whitespace-nowrap"
             >
               <Copy className="h-4 w-4 text-[#9E5D68]" />
               Sao chép đường dẫn
@@ -384,7 +384,7 @@ export function AdminDashboard({
             <button
               type="button"
               onClick={handleLogout}
-              className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[#49363A]/25 bg-[#F3D5DD] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#49363A] hover:bg-[#E8B6C2] whitespace-nowrap"
+              className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[#49363A]/25 bg-[#FCEBF0] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#543E43] hover:bg-[#F5C7D4] whitespace-nowrap"
             >
               <LogOut className="h-4 w-4" />
               Đăng xuất
@@ -395,16 +395,16 @@ export function AdminDashboard({
 
       <main className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 space-y-8">
         {/* Wall Selector & Future Event Wall Creator */}
-        <section className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#B87983]/25 bg-[#FFF7F0] p-4">
+        <section className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#E5BBC6]/25 bg-[#FFFCFA] p-4">
           <div className="flex flex-wrap items-center gap-2.5">
-            <label htmlFor="wall-switcher" className="text-sm font-bold text-[#49363A]">
+            <label htmlFor="wall-switcher" className="text-sm font-bold text-[#543E43]">
               Bức tường đang quản lý:
             </label>
             <select
               id="wall-switcher"
               value={activeWallId}
               onChange={(e) => setActiveWallId(e.target.value)}
-              className="min-h-10 rounded-xl border border-[#B87983]/45 bg-[#FFFFFF] px-3 py-1.5 text-sm font-bold text-[#49363A] focus:outline-none focus:ring-2 focus:ring-[#E8B6C2]"
+              className="min-h-10 rounded-xl border border-[#E5BBC6]/45 bg-[#FFFFFF] px-3 py-1.5 text-sm font-bold text-[#543E43] focus:outline-none focus:ring-2 focus:ring-[#E8B6C2]"
             >
               {walls.map((w) => (
                 <option key={w.wallId} value={w.wallId}>
@@ -417,7 +417,7 @@ export function AdminDashboard({
           <button
             type="button"
             onClick={() => setShowNewWallModal(true)}
-            className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[#B87983]/45 bg-[#F8E4E8] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#49363A] hover:bg-[#F3D5DD] whitespace-nowrap"
+            className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[#E5BBC6]/45 bg-[#FDF1F4] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#543E43] hover:bg-[#FCEBF0] whitespace-nowrap"
           >
             <Plus className="h-4 w-4" />
             Tạo bức tường mới
@@ -428,31 +428,31 @@ export function AdminDashboard({
         <section aria-labelledby="admin-overview-heading" className="space-y-4">
           <h2
             id="admin-overview-heading"
-            className="font-display text-xl font-extrabold text-[#49363A]"
+            className="font-display text-xl font-extrabold text-[#543E43]"
           >
             Tổng quan
           </h2>
 
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-            <div className="rounded-2xl border border-[#B87983]/25 bg-[#FFF7F0] p-5 scrapbook-shadow">
+            <div className="rounded-2xl border border-[#E5BBC6]/25 bg-[#FFFCFA] p-5 scrapbook-shadow">
               <p className="text-xs font-bold text-[#8B636B]">Tất cả lời nhắn</p>
-              <p className="mt-2 font-display text-3xl font-extrabold text-[#49363A] tabular-nums">
+              <p className="mt-2 font-display text-3xl font-extrabold text-[#543E43] tabular-nums">
                 {stats.totalPosts}
               </p>
             </div>
-            <div className="rounded-2xl border border-[#B87983]/25 bg-[#FFF7F0] p-5 scrapbook-shadow">
+            <div className="rounded-2xl border border-[#E5BBC6]/25 bg-[#FFFCFA] p-5 scrapbook-shadow">
               <p className="text-xs font-bold text-[#8B636B]">Đang hiển thị</p>
               <p className="mt-2 font-display text-3xl font-extrabold text-[#3D6B52] tabular-nums">
                 {stats.visibleCount}
               </p>
             </div>
-            <div className="rounded-2xl border border-[#B87983]/25 bg-[#FFF7F0] p-5 scrapbook-shadow">
+            <div className="rounded-2xl border border-[#E5BBC6]/25 bg-[#FFFCFA] p-5 scrapbook-shadow">
               <p className="text-xs font-bold text-[#8B636B]">Đã ẩn</p>
               <p className="mt-2 font-display text-3xl font-extrabold text-[#9A4E5F] tabular-nums">
                 {stats.hiddenCount}
               </p>
             </div>
-            <div className="rounded-2xl border border-[#B87983]/25 bg-[#FFF7F0] p-5 scrapbook-shadow">
+            <div className="rounded-2xl border border-[#E5BBC6]/25 bg-[#FFFCFA] p-5 scrapbook-shadow">
               <p className="text-xs font-bold text-[#8B636B]">Tổng lượt thả tim</p>
               <p className="mt-2 font-display text-3xl font-extrabold text-[#B8576B] tabular-nums">
                 {stats.totalLikes}
@@ -462,9 +462,9 @@ export function AdminDashboard({
 
           {/* Quản lý nhận bài */}
           {wall && (
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-[#B87983]/30 bg-[#FFF7F0] p-5 scrapbook-shadow">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-[#E5BBC6]/30 bg-[#FFFCFA] p-5 scrapbook-shadow">
               <div>
-                <h3 className="font-display text-lg font-extrabold text-[#49363A]">
+                <h3 className="font-display text-lg font-extrabold text-[#543E43]">
                   Quản lý nhận bài
                 </h3>
                 <p className="mt-1 text-sm text-[#6E565B]">
@@ -478,9 +478,9 @@ export function AdminDashboard({
                 type="button"
                 onClick={handleToggleWallOpen}
                 disabled={actionBusy}
-                className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border-2 border-[#49363A] px-5 py-2.5 text-sm font-extrabold text-[#49363A] transition-colors whitespace-nowrap shrink-0 ${
+                className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#D493A3] px-5 py-2.5 text-sm font-extrabold text-[#543E43] transition-colors whitespace-nowrap shrink-0 ${
                   wall.isOpen
-                    ? 'bg-[#F3D5DD] hover:bg-[#E8B6C2]'
+                    ? 'bg-[#FCEBF0] hover:bg-[#F5C7D4]'
                     : 'bg-[#DDEBF1] hover:bg-[#CBE0EA]'
                 }`}
               >
@@ -505,14 +505,14 @@ export function AdminDashboard({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2
               id="admin-posts-heading"
-              className="font-display text-xl font-extrabold text-[#49363A]"
+              className="font-display text-xl font-extrabold text-[#543E43]"
             >
               Kiểm duyệt lời nhắn
             </h2>
 
             <div
               role="tablist"
-              className="flex items-center gap-1.5 rounded-xl bg-[#FFF7F0] p-1 border border-[#B87983]/25"
+              className="flex items-center gap-1.5 rounded-xl bg-[#FFFCFA] p-1 border border-[#E5BBC6]/25"
             >
               {(
                 [
@@ -529,8 +529,8 @@ export function AdminDashboard({
                   onClick={() => setActiveTab(tab.key)}
                   className={`min-h-9 rounded-lg px-3 py-1.5 text-xs sm:text-sm font-bold transition-colors whitespace-nowrap ${
                     activeTab === tab.key
-                      ? 'bg-[#49363A] text-[#FFF7F0]'
-                      : 'text-[#49363A]/80 hover:text-[#49363A]'
+                      ? 'bg-[#9A5164] text-[#FFFFFF]'
+                      : 'text-[#543E43]/80 hover:text-[#543E43]'
                   }`}
                 >
                   {tab.label}
@@ -540,11 +540,11 @@ export function AdminDashboard({
           </div>
 
           {loadingData ? (
-            <div className="rounded-2xl border border-[#B87983]/25 bg-[#FFF7F0] p-8 text-center text-sm font-semibold text-[#6E565B]">
+            <div className="rounded-2xl border border-[#E5BBC6]/25 bg-[#FFFCFA] p-8 text-center text-sm font-semibold text-[#6E565B]">
               Đang tải danh sách lời nhắn...
             </div>
           ) : filteredPosts.length === 0 ? (
-            <div className="rounded-2xl border border-[#B87983]/25 bg-[#FFF7F0] p-10 text-center text-sm font-semibold text-[#6E565B]">
+            <div className="rounded-2xl border border-[#E5BBC6]/25 bg-[#FFFCFA] p-10 text-center text-sm font-semibold text-[#6E565B]">
               Chưa có lời nhắn nào trong mục này.
             </div>
           ) : (
@@ -552,10 +552,10 @@ export function AdminDashboard({
               {filteredPosts.map((post) => (
                 <div
                   key={post.postId}
-                  className={`rounded-2xl border bg-[#FFF7F0] p-4 sm:p-5 transition-colors ${
+                  className={`rounded-2xl border bg-[#FFFCFA] p-4 sm:p-5 transition-colors ${
                     post.isHidden
-                      ? 'border-[#C77082]/45 bg-[#FFF7F0]/75 opacity-90'
-                      : 'border-[#B87983]/25'
+                      ? 'border-[#C77082]/45 bg-[#FFFCFA]/75 opacity-90'
+                      : 'border-[#E5BBC6]/25'
                   }`}
                 >
                   <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -564,13 +564,13 @@ export function AdminDashboard({
                         <img
                           src={post.imageUrls[0]}
                           alt="Ảnh đính kèm"
-                          className="h-16 w-16 rounded-xl border border-[#B87983]/25 object-cover bg-[#FFFFFF] shrink-0"
+                          className="h-16 w-16 rounded-xl border border-[#E5BBC6]/25 object-cover bg-[#FFFFFF] shrink-0"
                         />
                       )}
 
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-[#6E565B]">
-                          <span className="font-extrabold text-sm text-[#49363A]">
+                          <span className="font-extrabold text-sm text-[#543E43]">
                             {post.senderDisplay}
                           </span>
                           <span aria-hidden="true">·</span>
@@ -594,7 +594,7 @@ export function AdminDashboard({
                           </span>
                         </div>
 
-                        <p className="mt-2 text-sm leading-relaxed text-[#49363A] line-clamp-3">
+                        <p className="mt-2 text-sm leading-relaxed text-[#543E43] line-clamp-3">
                           {post.message || '(Bài đăng chỉ có hình ảnh)'}
                         </p>
                       </div>
@@ -605,7 +605,7 @@ export function AdminDashboard({
                       <button
                         type="button"
                         onClick={() => setSelectedPost(post)}
-                        className="inline-flex min-h-9 items-center gap-1.5 rounded-xl border border-[#B87983]/40 bg-[#FFFFFF] px-3 py-1.5 text-xs font-bold text-[#49363A] hover:bg-[#F8E4E8] whitespace-nowrap"
+                        className="inline-flex min-h-9 items-center gap-1.5 rounded-xl border border-[#E5BBC6]/40 bg-[#FFFFFF] px-3 py-1.5 text-xs font-bold text-[#543E43] hover:bg-[#FDF1F4] whitespace-nowrap"
                       >
                         <Eye className="h-3.5 w-3.5" />
                         Xem chi tiết
@@ -626,7 +626,7 @@ export function AdminDashboard({
                           type="button"
                           onClick={() => setConfirmState({ type: 'hide', post })}
                           disabled={actionBusy}
-                          className="inline-flex min-h-9 items-center gap-1.5 rounded-xl border border-[#B87983]/45 bg-[#F8E4E8] px-3 py-1.5 text-xs font-bold text-[#49363A] hover:bg-[#F3D5DD] whitespace-nowrap"
+                          className="inline-flex min-h-9 items-center gap-1.5 rounded-xl border border-[#E5BBC6]/45 bg-[#FDF1F4] px-3 py-1.5 text-xs font-bold text-[#543E43] hover:bg-[#FCEBF0] whitespace-nowrap"
                         >
                           <EyeOff className="h-3.5 w-3.5" />
                           Ẩn bài đăng
@@ -665,11 +665,11 @@ export function AdminDashboard({
           aria-modal="true"
           className="fixed inset-0 z-50 flex items-center justify-center bg-[#49363A]/50 p-4 backdrop-blur-xs"
         >
-          <div className="w-full max-w-md rounded-3xl border-2 border-[#49363A]/20 bg-[#FFF7F0] p-6 shadow-2xl">
-            <h3 className="font-display text-xl font-extrabold text-[#49363A]">
+          <div className="w-full max-w-md rounded-3xl border border-[#D493A3]/20 bg-[#FFFCFA] p-6 shadow-2xl">
+            <h3 className="font-display text-xl font-extrabold text-[#543E43]">
               {confirmState.type === 'hide' ? 'Xác nhận ẩn bài đăng' : 'Xác nhận xóa bài đăng'}
             </h3>
-            <p className="mt-2.5 text-sm leading-relaxed text-[#49363A]/85">
+            <p className="mt-2.5 text-sm leading-relaxed text-[#543E43]/85">
               {confirmState.type === 'hide'
                 ? 'Bạn có chắc muốn ẩn lời nhắn này không?'
                 : 'Bạn có chắc muốn xóa lời nhắn này? Thao tác này không thể hoàn tác.'}
@@ -679,7 +679,7 @@ export function AdminDashboard({
                 type="button"
                 onClick={() => setConfirmState(null)}
                 disabled={actionBusy}
-                className="min-h-10 rounded-xl border border-[#B87983]/45 bg-[#FFF7F0] px-4 py-2 text-sm font-bold text-[#49363A] hover:bg-[#F8E4E8]"
+                className="min-h-10 rounded-xl border border-[#E5BBC6]/45 bg-[#FFFCFA] px-4 py-2 text-sm font-bold text-[#543E43] hover:bg-[#FDF1F4]"
               >
                 Hủy bỏ
               </button>
@@ -687,10 +687,10 @@ export function AdminDashboard({
                 type="button"
                 onClick={handleConfirmModeration}
                 disabled={actionBusy}
-                className={`min-h-10 rounded-xl border-2 border-[#49363A] px-4 py-2 text-sm font-extrabold text-[#49363A] ${
+                className={`min-h-10 rounded-xl border border-[#D493A3] px-4 py-2 text-sm font-extrabold text-[#543E43] ${
                   confirmState.type === 'delete'
                     ? 'bg-[#F5BCC8] hover:bg-[#EEA4B4]'
-                    : 'bg-[#E8B6C2] hover:bg-[#DFA3B2]'
+                    : 'bg-[#F5C7D4] hover:bg-[#DFA3B2]'
                 }`}
               >
                 {actionBusy
@@ -711,24 +711,24 @@ export function AdminDashboard({
           aria-modal="true"
           className="fixed inset-0 z-50 flex items-center justify-center bg-[#49363A]/50 p-4 backdrop-blur-xs"
         >
-          <div className="w-full max-w-md rounded-3xl border-2 border-[#49363A]/20 bg-[#FFF7F0] p-6 shadow-2xl">
-            <h3 className="font-display text-xl font-extrabold text-[#49363A]">
+          <div className="w-full max-w-md rounded-3xl border border-[#D493A3]/20 bg-[#FFFCFA] p-6 shadow-2xl">
+            <h3 className="font-display text-xl font-extrabold text-[#543E43]">
               Tạo bức tường sự kiện mới
             </h3>
             <form onSubmit={handleCreateWall} className="mt-4 space-y-4">
               <div>
-                <label className="block text-sm font-bold text-[#49363A]">Tên bức tường</label>
+                <label className="block text-sm font-bold text-[#543E43]">Tên bức tường</label>
                 <input
                   type="text"
                   required
                   value={newWallTitle}
                   onChange={(e) => setNewWallTitle(e.target.value)}
                   placeholder="Ví dụ: Nam Hòa Mùa Hè 2026"
-                  className="mt-1 w-full min-h-10 rounded-xl border border-[#B87983]/45 bg-[#FFFFFF] px-3.5 py-2 text-sm text-[#49363A]"
+                  className="mt-1 w-full min-h-10 rounded-xl border border-[#E5BBC6]/45 bg-[#FFFFFF] px-3.5 py-2 text-sm text-[#543E43]"
                 />
               </div>
               <div>
-                <label className="block text-sm font-bold text-[#49363A]">
+                <label className="block text-sm font-bold text-[#543E43]">
                   Mã đường dẫn (không dấu, viết liền)
                 </label>
                 <input
@@ -737,17 +737,17 @@ export function AdminDashboard({
                   value={newWallSlug}
                   onChange={(e) => setNewWallSlug(e.target.value)}
                   placeholder="vi-du: nam-hoa-he-2026"
-                  className="mt-1 w-full min-h-10 rounded-xl border border-[#B87983]/45 bg-[#FFFFFF] px-3.5 py-2 text-sm text-[#49363A]"
+                  className="mt-1 w-full min-h-10 rounded-xl border border-[#E5BBC6]/45 bg-[#FFFFFF] px-3.5 py-2 text-sm text-[#543E43]"
                 />
               </div>
               <div>
-                <label className="block text-sm font-bold text-[#49363A]">Mô tả ngắn</label>
+                <label className="block text-sm font-bold text-[#543E43]">Mô tả ngắn</label>
                 <textarea
                   rows={3}
                   value={newWallDesc}
                   onChange={(e) => setNewWallDesc(e.target.value)}
                   placeholder="Lời giới thiệu ngắn cho bức tường..."
-                  className="mt-1 w-full rounded-xl border border-[#B87983]/45 bg-[#FFFFFF] px-3.5 py-2 text-sm text-[#49363A]"
+                  className="mt-1 w-full rounded-xl border border-[#E5BBC6]/45 bg-[#FFFFFF] px-3.5 py-2 text-sm text-[#543E43]"
                 />
               </div>
               {newWallError && (
@@ -757,14 +757,14 @@ export function AdminDashboard({
                 <button
                   type="button"
                   onClick={() => setShowNewWallModal(false)}
-                  className="min-h-10 rounded-xl border border-[#B87983]/45 bg-[#FFF7F0] px-4 py-2 text-sm font-bold text-[#49363A]"
+                  className="min-h-10 rounded-xl border border-[#E5BBC6]/45 bg-[#FFFCFA] px-4 py-2 text-sm font-bold text-[#543E43]"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={actionBusy}
-                  className="min-h-10 rounded-xl border-2 border-[#49363A] bg-[#E8B6C2] px-4 py-2 text-sm font-extrabold text-[#49363A]"
+                  className="min-h-10 rounded-xl border border-[#D493A3] bg-[#F5C7D4] px-4 py-2 text-sm font-extrabold text-[#543E43]"
                 >
                   Tạo bức tường
                 </button>

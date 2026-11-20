@@ -32,22 +32,22 @@ export function LikeButton({ liked, count, onToggle, compact = false }: LikeButt
       disabled={busy}
       aria-pressed={liked}
       aria-label={liked ? `Bỏ thả tim (${count})` : `Thả tim (${count})`}
-      className={`inline-flex items-center gap-1.5 rounded-xl border transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#49363A] whitespace-nowrap shrink-0 ${
+      className={`inline-flex items-center gap-1.5 rounded-xl border transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A5164] whitespace-nowrap shrink-0 ${
         compact ? 'min-h-9 px-2.5 py-1 text-xs' : 'min-h-10 px-3.5 py-1.5 text-sm'
       } ${
         liked
-          ? 'border-[#B87983] bg-[#F3D5DD] text-[#49363A] font-bold'
-          : 'border-[#B87983]/35 bg-[#FFF7F0]/90 text-[#49363A]/85 font-semibold hover:bg-[#F8E4E8]'
+          ? 'border-[#DF9DAE] bg-[#FCE6ED] text-[#543E43] font-bold'
+          : 'border-[#E5BAC5]/65 bg-[#FFFFFF]/90 text-[#664C52] font-semibold hover:bg-[#FDF1F4]'
       }`}
     >
       <Heart
         className={`h-4 w-4 transition-transform duration-150 ${popping ? 'scale-125' : 'scale-100'} ${
-          liked ? 'fill-[#B8576B] text-[#B8576B]' : 'text-[#B87983]'
+          liked ? 'fill-[#D96B82] text-[#D96B82]' : 'text-[#CF8E9E]'
         }`}
         strokeWidth={2.2}
       />
       <span>{liked ? 'Đã thả tim' : 'Thả tim ♡'}</span>
-      <span className="tabular-nums font-bold text-[#49363A]">{count}</span>
+      <span className="tabular-nums font-bold text-[#543E43]">{count}</span>
     </button>
   );
 }
