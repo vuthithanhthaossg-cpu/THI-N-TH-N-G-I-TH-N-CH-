@@ -1,16 +1,18 @@
 import { Heart, Share2 } from 'lucide-react';
 
 interface HeaderProps {
+  activeView: 'home' | 'wall';
   onOpenForm: () => void;
-  onScrollToWall: () => void;
+  onNavigateWall: () => void;
   onOpenShare: () => void;
   onNavigateHome: () => void;
   isOpenForSubmissions: boolean;
 }
 
 export function Header({
+  activeView,
   onOpenForm,
-  onScrollToWall,
+  onNavigateWall,
   onOpenShare,
   onNavigateHome,
   isOpenForSubmissions,
@@ -22,6 +24,7 @@ export function Header({
         <button
           type="button"
           onClick={onNavigateHome}
+          aria-current={activeView === 'home' ? 'page' : undefined}
           className="group flex items-center gap-2.5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C98A98] rounded-lg shrink-0"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FFFFFF] border border-[#E5BAC5]/60 shadow-xs text-[#C98A98] transition-transform duration-150 group-hover:scale-105 shrink-0">
@@ -45,8 +48,13 @@ export function Header({
           </span>
           <button
             type="button"
-            onClick={onScrollToWall}
-            className="whitespace-nowrap shrink-0 hover:text-[#9A5164] underline-offset-4 hover:underline transition-colors"
+            onClick={onNavigateWall}
+            aria-current={activeView === 'wall' ? 'page' : undefined}
+            className={`whitespace-nowrap shrink-0 underline-offset-4 transition-colors ${
+              activeView === 'wall'
+                ? 'text-[#9A5164] font-extrabold underline decoration-[#DF9DAE] decoration-2'
+                : 'hover:text-[#9A5164] hover:underline'
+            }`}
           >
             Bức tường
           </button>

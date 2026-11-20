@@ -1,4 +1,5 @@
 import { Share2 } from 'lucide-react';
+import { useEffect } from 'react';
 import { ChibiAngel } from './decorations/ChibiAngel';
 import { PastelFlower, SparkleStar } from './decorations/ScrapbookAccents';
 
@@ -9,6 +10,15 @@ interface SuccessScreenProps {
 }
 
 export function SuccessScreen({ open, onViewWall, onShare }: SuccessScreenProps) {
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onViewWall();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open, onViewWall]);
+
   if (!open) return null;
 
   return (

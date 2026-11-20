@@ -1,4 +1,4 @@
-import { PenLine, Share2 } from 'lucide-react';
+import { ArrowLeft, PenLine, Share2 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import type { CardStyle, ScrapbookPost } from '../types/scrapbook';
 import { LoveLetterCard } from './cards/LoveLetterCard';
@@ -9,15 +9,20 @@ import { ChibiAngel } from './decorations/ChibiAngel';
 import { PastelFlower } from './decorations/ScrapbookAccents';
 
 interface ScrapbookWallProps {
+  wallId: string;
   posts: ScrapbookPost[];
   loading: boolean;
   error: string | null;
   isOpen: boolean;
+  isWallPage?: boolean;
+  wallTitle?: string;
+  wallDescription?: string;
   onSelectPost: (post: ScrapbookPost) => void;
   onToggleLike: (postId: string) => Promise<void>;
   onOpenForm: () => void;
   onOpenShare: () => void;
   onRetry: () => void;
+  onNavigateHome?: () => void;
 }
 
 type FilterKey = 'all' | CardStyle;
@@ -59,18 +64,28 @@ function estimateCardWeight(post: ScrapbookPost): number {
 }
 
 export function ScrapbookWall({
+  wallId,
   posts,
   loading,
   error,
   isOpen,
+  isWallPage = false,
+  wallTitle,
+  wallDescription,
   onSelectPost,
   onToggleLike,
   onOpenForm,
   onOpenShare,
   onRetry,
+  onNavigateHome,
 }: ScrapbookWallProps) {
   const [activeFilter, setActiveFilter] = useState<FilterKey>('all');
   const columnCount = useColumnCount();
+
+  // Reset card style filter whenever switching to another wall so posts are never hidden by stale state
+  useEffect(() => {
+    setActiveFilter('all');
+  }, [wallId]);
 
   const filteredPosts = useMemo(() => {
     if (activeFilter === 'all') return posts;
@@ -142,19 +157,53 @@ export function ScrapbookWall({
     <section
       id="scrapbook-wall"
       aria-labelledby="wall-heading"
-      className="mx-auto max-w-7xl px-4 pt-4 pb-20 sm:px-6 lg:px-8"
+      className={`mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 ${
+        isWallPage ? 'pt-6 sm:pt-9' : 'pt-4'
+      }`}
     >
+      {/* Dedicated wall-page top navigation bar */}
+      {isWallPage && (
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+          {onNavigateHome && (
+            <button
+              type="button"
+              onClick={onNavigateHome}
+              className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[#E5BBC6]/70 bg-[#FFFCFA] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#543E43] hover:bg-[#FCEBF0] transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4 text-[#B06376]" />
+              Quay về trang chủ
+            </button>
+          )}
+          <span className="font-hand text-base sm:text-lg text-[#B06376]">
+            {wallTitle || 'THIÊN THẦN GỬI THÂN CHỦ'} · Lưu xá Nam Hòa
+          </span>
+        </div>
+      )}
+
       {/* Section Header */}
       <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between border-b border-[#E2B5C1]/45 pb-6">
         <div>
-          <h2
-            id="wall-heading"
-            className="angel-heading-soft text-2xl sm:text-3xl font-extrabold tracking-tight"
-          >
-            Góc này toàn điều dễ thương ♡
-          </h2>
+          {isWallPage ? (
+            <h1
+              id="wall-heading"
+              className="angel-heading-soft text-2xl sm:text-4xl font-extrabold tracking-tight"
+            >
+              Góc này toàn điều dễ thương ♡
+            </h1>
+          ) : (
+            <h2
+              id="wall-heading"
+              className="angel-heading-soft text-2xl sm:text-3xl font-extrabold tracking-tight"
+            >
+              Góc này toàn điều dễ thương ♡
+            </h2>
+          )}
           <div className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm text-[#7A5E64]">
-            <span>Những lời nhắn và khoảnh khắc nhà mình gửi lại.</span>
+            <span>
+              {isWallPage && wallDescription
+                ? wallDescription
+                : 'Những lời nhắn và khoảnh khắc nhà mình gửi lại.'}
+            </span>
             <span aria-hidden="true" className="text-[#D497A6]">
               ·
             </span>
@@ -162,6 +211,11 @@ export function ScrapbookWall({
               {posts.length} lời nhắn
             </span>
           </div>
+          {isWallPage && !isOpen && (
+            <p className="mt-3 inline-block rounded-xl border border-[#E2B2BF]/60 bg-[#FFFCFA] px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-[#964E60]">
+              Bức tường hiện đã tạm đóng nhận lời nhắn. Bạn vẫn có thể ngắm và thả tim các kỷ niệm bên dưới nha!
+            </p>
+          )}
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5">

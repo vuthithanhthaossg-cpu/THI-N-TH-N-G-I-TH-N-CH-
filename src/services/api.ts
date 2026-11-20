@@ -40,6 +40,7 @@ interface PostRow {
   created_at: string;
 }
 
+const CARD_STYLES: CardStyle[] = ['wish', 'memory', 'letter', 'secret'];
 const PAPER_TONES: PaperTone[] = ['cream', 'butter', 'blush', 'lavender', 'sky'];
 const TAPE_STYLES: TapeStyle[] = ['striped', 'dots', 'grid', 'clip'];
 const TILT_STEPS = [-1.4, -0.7, 0.5, 1.2, -1.0, 0.8];
@@ -56,23 +57,32 @@ function mapWallRow(row: WallRow): Wall {
 
 function mapPostRow(row: PostRow, likedSet?: Set<string>, includeModeration = false): ScrapbookPost {
   const isAnon = Boolean(row.is_anonymous) || !row.sender_name?.trim();
+  const imageUrls = Array.isArray(row.image_urls)
+    ? row.image_urls.filter((url): url is string => typeof url === 'string' && url.length > 0)
+    : [];
+  const cardStyle: CardStyle = CARD_STYLES.includes(row.card_style)
+    ? row.card_style
+    : determineCardStyle(row.message || '', imageUrls.length, isAnon);
+  const paperTone: PaperTone = PAPER_TONES.includes(row.paper_tone) ? row.paper_tone : 'cream';
+  const tapeStyle: TapeStyle = TAPE_STYLES.includes(row.tape_style) ? row.tape_style : 'striped';
+
   const post: ScrapbookPost = {
     postId: row.post_id,
     wallId: row.wall_id,
     senderDisplay: isAnon ? ANONYMOUS_LABEL : row.sender_name.trim(),
     isAnonymous: isAnon,
     message: row.message || '',
-    imageUrls: Array.isArray(row.image_urls) ? row.image_urls : [],
-    cardStyle: row.card_style,
-    paperTone: row.paper_tone,
-    tapeStyle: row.tape_style,
-    tiltDeg: Number(row.tilt_deg || 0),
+    imageUrls,
+    cardStyle,
+    paperTone,
+    tapeStyle,
+    tiltDeg: Number.isFinite(Number(row.tilt_deg)) ? Number(row.tilt_deg) : 0,
     createdAt: row.created_at,
-    likeCount: Number(row.like_count || 0),
+    likeCount: Math.max(0, Number(row.like_count || 0)),
     likedByMe: likedSet ? likedSet.has(row.post_id) : false,
   };
   if (includeModeration) {
-    post.isHidden = row.is_hidden;
+    post.isHidden = Boolean(row.is_hidden);
   }
   return post;
 }
@@ -138,20 +148,23 @@ export async function fetchWallAndPosts(
   wallId: string,
 ): Promise<{ wall: Wall; posts: ScrapbookPost[] }> {
   const client = requireSupabase();
+  const normalizedWallId = wallId.trim() || 'nam-hoa';
   const visitorId = getOrCreateVisitorId();
 
   const [wallRes, postsRes, likesRes] = await Promise.all([
-    client.from('walls').select('*').eq('wall_id', wallId).maybeSingle(),
+    client.from('walls').select('*').eq('wall_id', normalizedWallId).maybeSingle(),
     client
       .from('posts')
       .select('*')
-      .eq('wall_id', wallId)
+      .eq('wall_id', normalizedWallId)
       .eq('is_hidden', false)
       .order('created_at', { ascending: false }),
-    client.rpc('get_visitor_liked_posts', {
-      p_wall_id: wallId,
-      p_visitor_id: visitorId,
-    }),
+    visitorId.length >= 4
+      ? client.rpc('get_visitor_liked_posts', {
+          p_wall_id: normalizedWallId,
+          p_visitor_id: visitorId,
+        })
+      : Promise.resolve({ data: [] as { post_id: string }[], error: null }),
   ]);
 
   if (wallRes.error) {
@@ -170,9 +183,11 @@ export async function fetchWallAndPosts(
       : [],
   );
 
+  const rawPosts = Array.isArray(postsRes.data) ? (postsRes.data as PostRow[]) : [];
+
   return {
     wall: mapWallRow(wallRes.data as WallRow),
-    posts: (postsRes.data as PostRow[]).map((row) => mapPostRow(row, likedIds, false)),
+    posts: rawPosts.map((row) => mapPostRow(row, likedIds, false)),
   };
 }
 

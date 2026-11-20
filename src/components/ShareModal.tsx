@@ -22,32 +22,47 @@ export function ShareModal({
   const [canNativeShare, setCanNativeShare] = useState(false);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      setCopied(false);
+      return;
+    }
     setShareUrl(getPublicWallUrl(wallId));
     setCanNativeShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function');
-  }, [open, wallId]);
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open, wallId, onClose]);
 
   if (!open) return null;
 
   async function handleCopy() {
+    const urlToCopy = shareUrl || getPublicWallUrl(wallId);
     try {
-      await navigator.clipboard.writeText(shareUrl);
+      await navigator.clipboard.writeText(urlToCopy);
     } catch {
-      const textarea = document.createElement('textarea');
-      textarea.value = shareUrl;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = urlToCopy;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      } catch {
+        // Ignore clipboard fallback restriction inside sandboxed iframe
+      }
     }
     setCopied(true);
     onCopiedToast('Đã sao chép đường dẫn rồi nha!');
-    setTimeout(() => setCopied(false), 2400);
+    window.setTimeout(() => setCopied(false), 2400);
   }
 
   async function handleNativeShare() {
+    const urlToShare = shareUrl || getPublicWallUrl(wallId);
     if (!canNativeShare) {
       await handleCopy();
       return;
@@ -56,7 +71,7 @@ export function ShareModal({
       await navigator.share({
         title: wallTitle || 'THIÊN THẦN GỬI THÂN CHỦ',
         text: 'Nhà mình ơiii! Vào gửi một chiếc thương lên bức tường lưu bút Nam Hòa nha ♡',
-        url: shareUrl,
+        url: urlToShare,
       });
     } catch {
       // User cancelled native share sheet

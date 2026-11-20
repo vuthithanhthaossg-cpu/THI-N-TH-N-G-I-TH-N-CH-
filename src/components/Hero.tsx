@@ -7,14 +7,14 @@ interface HeroProps {
   wallDescription?: string;
   isOpen: boolean;
   onOpenForm: () => void;
-  onScrollToWall: () => void;
+  onExploreWall: () => void;
 }
 
 export function Hero({
   wallDescription,
   isOpen,
   onOpenForm,
-  onScrollToWall,
+  onExploreWall,
 }: HeroProps) {
   return (
     <section className="mx-auto max-w-5xl px-4 pt-6 pb-8 sm:px-6 sm:pt-10 sm:pb-12">
@@ -113,7 +113,7 @@ export function Hero({
 
             <button
               type="button"
-              onClick={onScrollToWall}
+              onClick={onExploreWall}
               className="w-full sm:w-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-[#E2BAC5] bg-[#FFFFFF] px-6 py-3 text-base font-bold text-[#543E43] transition-colors duration-150 hover:bg-[#FDF1F4] whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9A5164]"
             >
               Khám phá bức tường

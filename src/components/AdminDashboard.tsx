@@ -64,6 +64,12 @@ export function AdminDashboard({
 
   const [walls, setWalls] = useState<Wall[]>([]);
   const [activeWallId, setActiveWallId] = useState<string>(initialWallId || DEFAULT_WALL_ID);
+
+  useEffect(() => {
+    if (initialWallId) {
+      setActiveWallId(initialWallId);
+    }
+  }, [initialWallId]);
   const [wall, setWall] = useState<Wall | null>(null);
   const [posts, setPosts] = useState<ScrapbookPost[]>([]);
   const [stats, setStats] = useState<AdminStats>({
@@ -241,12 +247,18 @@ export function AdminDashboard({
     try {
       await navigator.clipboard.writeText(url);
     } catch {
-      const ta = document.createElement('textarea');
-      ta.value = url;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      } catch {
+        // Ignore clipboard fallback restriction inside sandboxed iframe
+      }
     }
     onShowToast('Đã sao chép đường dẫn rồi nha!');
   }
@@ -703,6 +715,9 @@ export function AdminDashboard({
           role="dialog"
           aria-modal="true"
           className="fixed inset-0 z-50 flex items-center justify-center bg-[#543E43]/40 p-4 backdrop-blur-xs"
+          onClick={(e) => {
+            if (e.target === e.currentTarget && !actionBusy) setConfirmState(null);
+          }}
         >
           <div className="w-full max-w-md rounded-3xl border border-[#E5BBC6]/70 bg-[#FFFCFA] p-6 shadow-2xl">
             <h3 className="font-display text-xl font-extrabold text-[#543E43]">
@@ -749,6 +764,9 @@ export function AdminDashboard({
           role="dialog"
           aria-modal="true"
           className="fixed inset-0 z-50 flex items-center justify-center bg-[#543E43]/40 p-4 backdrop-blur-xs"
+          onClick={(e) => {
+            if (e.target === e.currentTarget && !actionBusy) setShowNewWallModal(false);
+          }}
         >
           <div className="w-full max-w-md rounded-3xl border border-[#E5BBC6]/70 bg-[#FFFCFA] p-6 shadow-2xl">
             <h3 className="font-display text-xl font-extrabold text-[#543E43]">
