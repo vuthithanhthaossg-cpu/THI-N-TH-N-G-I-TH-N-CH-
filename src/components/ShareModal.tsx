@@ -1,5 +1,5 @@
 import { Check, Copy, Share2, X } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getPublicWallUrl } from '../utils/visitor';
 
 interface ShareModalProps {
@@ -18,11 +18,16 @@ export function ShareModal({
   onCopiedToast,
 }: ShareModalProps) {
   const [copied, setCopied] = useState(false);
+  const [shareUrl, setShareUrl] = useState('');
+  const [canNativeShare, setCanNativeShare] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    setShareUrl(getPublicWallUrl(wallId));
+    setCanNativeShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function');
+  }, [open, wallId]);
 
   if (!open) return null;
-
-  const shareUrl = getPublicWallUrl(wallId);
-  const canNativeShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
 
   async function handleCopy() {
     try {

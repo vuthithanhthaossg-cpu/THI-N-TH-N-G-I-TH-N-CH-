@@ -30,20 +30,20 @@ const FILTER_OPTIONS: { key: FilterKey; label: string }[] = [
   { key: 'secret', label: 'Thư bí mật' },
 ];
 
-function useColumnCount(): number {
-  const getCount = () => {
-    if (typeof window === 'undefined') return 3;
-    const width = window.innerWidth;
-    if (width >= 1280) return 4;
-    if (width >= 1024) return 3;
-    if (width >= 640) return 2;
-    return 1;
-  };
+function getColumnCountForWidth(width: number): number {
+  if (width >= 1280) return 4;
+  if (width >= 1024) return 3;
+  if (width >= 640) return 2;
+  return 1;
+}
 
-  const [cols, setCols] = useState<number>(getCount);
+function useColumnCount(): number {
+  // Use a deterministic initial value so the first render never depends on window.innerWidth
+  const [cols, setCols] = useState<number>(3);
 
   useEffect(() => {
-    const onResize = () => setCols(getCount());
+    const onResize = () => setCols(getColumnCountForWidth(window.innerWidth));
+    onResize();
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, []);

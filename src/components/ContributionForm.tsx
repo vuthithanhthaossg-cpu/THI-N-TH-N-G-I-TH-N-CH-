@@ -48,7 +48,16 @@ export function ContributionForm({
 
   if (!open) return null;
 
+  function revokePreviews(list: PreparedImage[]) {
+    for (const img of list) {
+      if (img.previewUrl.startsWith('blob:')) {
+        URL.revokeObjectURL(img.previewUrl);
+      }
+    }
+  }
+
   function resetForm() {
+    revokePreviews(images);
     setImages([]);
     setMessage('');
     setSenderName('');
@@ -93,7 +102,13 @@ export function ContributionForm({
   }
 
   function handleRemoveImage(id: string) {
-    setImages((prev) => prev.filter((img) => img.id !== id));
+    setImages((prev) => {
+      const target = prev.find((img) => img.id === id);
+      if (target && target.previewUrl.startsWith('blob:')) {
+        URL.revokeObjectURL(target.previewUrl);
+      }
+      return prev.filter((img) => img.id !== id);
+    });
     setErrorMessage(null);
   }
 
@@ -109,7 +124,7 @@ export function ContributionForm({
 
     setErrorMessage(null);
     setSubmitting(true);
-    setUploadProgress(10);
+    setUploadProgress(5);
 
     try {
       const result = await createPostWithProgress(
@@ -118,7 +133,7 @@ export function ContributionForm({
           senderName: isAnonymous ? '' : senderName.trim(),
           isAnonymous,
           message: trimmedMsg,
-          images: images.map((img) => img.dataUrl),
+          images,
         },
         (pct) => setUploadProgress(pct),
       );

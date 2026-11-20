@@ -7,6 +7,7 @@ import { Hero } from './components/Hero';
 import { ScrapbookWall } from './components/ScrapbookWall';
 import { ShareModal } from './components/ShareModal';
 import { SuccessScreen } from './components/SuccessScreen';
+import { isSupabaseConfigured } from './lib/supabase';
 import { fetchWallAndPosts, subscribeWallEvents, togglePostLike } from './services/api';
 import { DEFAULT_WALL_ID, type ScrapbookPost, type Wall } from './types/scrapbook';
 
@@ -21,18 +22,33 @@ function parseRoute(pathname: string): RouteState {
     return { view: 'admin', wallId: parts[1] || DEFAULT_WALL_ID };
   }
   if (pathname.startsWith('/wall/')) {
-    const slug = decodeURIComponent(pathname.slice('/wall/'.length).split('/')[0] || '');
+    const rawSlug = pathname.slice('/wall/'.length).split('/')[0] || '';
+    let slug = rawSlug;
+    try {
+      slug = decodeURIComponent(rawSlug);
+    } catch {
+      slug = rawSlug;
+    }
     return { view: 'public', wallId: slug || DEFAULT_WALL_ID };
   }
   return { view: 'public', wallId: DEFAULT_WALL_ID };
 }
 
 export default function App() {
-  const [route, setRoute] = useState<RouteState>(() => parseRoute(window.location.pathname));
+  // Deterministic initial route so first render never reads window.location synchronously
+  const [route, setRoute] = useState<RouteState>({
+    view: 'public',
+    wallId: DEFAULT_WALL_ID,
+  });
+  const [isRouteReady, setIsRouteReady] = useState(false);
   const [wall, setWall] = useState<Wall | null>(null);
   const [posts, setPosts] = useState<ScrapbookPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(isSupabaseConfigured);
+  const [error, setError] = useState<string | null>(
+    isSupabaseConfigured
+      ? null
+      : 'Chưa cấu hình kết nối Supabase. Vui lòng thiết lập VITE_SUPABASE_URL và VITE_SUPABASE_ANON_KEY.',
+  );
 
   const [formOpen, setFormOpen] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
@@ -50,11 +66,15 @@ export default function App() {
     return () => window.clearTimeout(timer);
   }, [toast]);
 
-  // Listen to browser back/forward navigation
+  // Sync route from browser pathname after mount & listen to back/forward navigation
   useEffect(() => {
-    const onPopState = () => setRoute(parseRoute(window.location.pathname));
-    window.addEventListener('popstate', onPopState);
-    return () => window.removeEventListener('popstate', onPopState);
+    const syncRoute = () => {
+      setRoute(parseRoute(window.location.pathname));
+      setIsRouteReady(true);
+    };
+    syncRoute();
+    window.addEventListener('popstate', syncRoute);
+    return () => window.removeEventListener('popstate', syncRoute);
   }, []);
 
   const navigateTo = useCallback((path: string) => {
@@ -64,6 +84,13 @@ export default function App() {
   }, []);
 
   const loadPublicWall = useCallback(async (wallId: string, silent = false) => {
+    if (!isSupabaseConfigured) {
+      setLoading(false);
+      setError(
+        'Chưa cấu hình kết nối Supabase. Vui lòng thiết lập VITE_SUPABASE_URL và VITE_SUPABASE_ANON_KEY.',
+      );
+      return;
+    }
     if (!silent) {
       setLoading(true);
       setError(null);
@@ -83,30 +110,46 @@ export default function App() {
     }
   }, []);
 
-  // Load wall data and subscribe to live SSE updates when on public view
+  // Load wall data and subscribe to Supabase Realtime updates once mounted on public view
   useEffect(() => {
-    if (route.view !== 'public') return;
+    if (!isRouteReady || route.view !== 'public') return;
     loadPublicWall(route.wallId);
 
+    if (!isSupabaseConfigured) return;
+
     const unsubscribe = subscribeWallEvents(route.wallId, (evt) => {
-      if (evt.type === 'post-created' && evt.payload) {
-        const incoming = evt.payload as ScrapbookPost;
+      if (evt.type === 'post-created') {
+        const incoming = evt.payload;
         setPosts((prev) => {
           if (prev.some((p) => p.postId === incoming.postId)) return prev;
           return [incoming, ...prev];
         });
-      } else if (evt.type === 'post-liked' && evt.payload) {
-        const { postId, likeCount } = evt.payload as { postId: string; likeCount: number };
-        setPosts((prev) =>
-          prev.map((p) => (p.postId === postId ? { ...p, likeCount } : p)),
-        );
-      } else if (evt.type === 'post-deleted' && evt.payload) {
-        const { postId } = evt.payload as { postId: string };
+      } else if (evt.type === 'post-updated') {
+        const { post: updated, isHidden } = evt.payload;
+        if (isHidden) {
+          setPosts((prev) => prev.filter((p) => p.postId !== updated.postId));
+        } else {
+          setPosts((prev) => {
+            const exists = prev.some((p) => p.postId === updated.postId);
+            if (!exists) {
+              // Post was restored by admin — insert and sort newest-first
+              return [updated, ...prev].sort(
+                (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+              );
+            }
+            // Preserve local visitor's likedByMe state while syncing live likeCount/content
+            return prev.map((p) =>
+              p.postId === updated.postId
+                ? { ...updated, likedByMe: p.likedByMe }
+                : p,
+            );
+          });
+        }
+      } else if (evt.type === 'post-deleted') {
+        const { postId } = evt.payload;
         setPosts((prev) => prev.filter((p) => p.postId !== postId));
-      } else if (evt.type === 'wall-updated' && evt.payload) {
-        setWall(evt.payload as Wall);
-      } else if (evt.type === 'wall-refresh') {
-        loadPublicWall(route.wallId, true);
+      } else if (evt.type === 'wall-updated') {
+        setWall(evt.payload);
       }
     });
 
@@ -128,8 +171,14 @@ export default function App() {
         ),
       );
       try {
-        const { post: updated } = await togglePostLike(route.wallId, postId);
-        setPosts((prev) => prev.map((p) => (p.postId === postId ? updated : p)));
+        const result = await togglePostLike(route.wallId, postId);
+        setPosts((prev) =>
+          prev.map((p) =>
+            p.postId === postId
+              ? { ...p, likeCount: result.likeCount, likedByMe: result.likedByMe }
+              : p,
+          ),
+        );
       } catch (err) {
         loadPublicWall(route.wallId, true);
         showToast(err instanceof Error ? err.message : 'Chưa thả tim được, bạn thử lại nha!');
@@ -158,6 +207,8 @@ export default function App() {
     ? posts.find((p) => p.postId === selectedPostId) ?? null
     : null;
 
+  const canSubmit = isSupabaseConfigured && (wall ? wall.isOpen : true);
+
   return (
     <div className="min-h-screen flex flex-col text-[#543E43]">
       {route.view === 'admin' ? (
@@ -175,14 +226,14 @@ export default function App() {
             onScrollToWall={handleScrollToWall}
             onOpenShare={() => setShareOpen(true)}
             onNavigateHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            isOpenForSubmissions={wall ? wall.isOpen : true}
+            isOpenForSubmissions={canSubmit}
           />
 
           <main className="flex-1">
             <Hero
               wallTitle={wall?.title}
               wallDescription={wall?.description}
-              isOpen={wall ? wall.isOpen : true}
+              isOpen={canSubmit}
               onOpenForm={() => setFormOpen(true)}
               onScrollToWall={handleScrollToWall}
             />
@@ -191,7 +242,7 @@ export default function App() {
               posts={posts}
               loading={loading}
               error={error}
-              isOpen={wall ? wall.isOpen : true}
+              isOpen={canSubmit}
               onSelectPost={(post) => setSelectedPostId(post.postId)}
               onToggleLike={handleToggleLike}
               onOpenForm={() => setFormOpen(true)}
