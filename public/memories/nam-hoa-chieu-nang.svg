@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DDEBF1"/>
+      <stop offset="55%" stop-color="#F8E4E8"/>
+      <stop offset="100%" stop-color="#FFF2E2"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE6A7"/>
+      <stop offset="100%" stop-color="#F8C8C4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <!-- Soft pastel clouds -->
+  <g fill="#FFF7F0" opacity="0.9">
+    <ellipse cx="155" cy="140" rx="76" ry="30"/>
+    <ellipse cx="120" cy="148" rx="45" ry="22"/>
+    <ellipse cx="198" cy="148" rx="42" ry="20"/>
+    <ellipse cx="635" cy="120" rx="88" ry="32"/>
+    <ellipse cx="585" cy="130" rx="48" ry="22"/>
+    <ellipse cx="685" cy="130" rx="50" ry="22"/>
+  </g>
+  <!-- Warm sunset sun -->
+  <circle cx="400" cy="235" r="78" fill="url(#sun)"/>
+  <circle cx="400" cy="235" r="96" fill="#FFE6A7" opacity="0.22"/>
+  <!-- Pastel hills -->
+  <path d="M0 430 Q180 330 390 400 T800 375 L800 600 L0 600 Z" fill="#E6DDF1"/>
+  <path d="M0 470 Q240 390 490 455 T800 435 L800 600 L0 600 Z" fill="#D5E4D6"/>
+  <!-- Picnic blanket -->
+  <path d="M205 510 L595 510 L650 585 L150 585 Z" fill="#FFF7F0" stroke="#E8B6C2" stroke-width="4"/>
+  <path d="M270 510 L235 585 M355 510 L340 585 M445 510 L460 585 M530 510 L565 585" stroke="#F3D5DD" stroke-width="6"/>
+  <path d="M188 538 L612 538 M170 562 L630 562" stroke="#F3D5DD" stroke-width="6"/>
+  <!-- String of warm festival bunting -->
+  <path d="M0 175 Q400 265 800 165" stroke="#B87983" stroke-width="2.5" stroke-dasharray="4 4"/>
+  <g stroke="#49363A" stroke-width="1.5" stroke-linejoin="round">
+    <polygon points="110,196 135,202 118,232" fill="#F3D5DD"/>
+    <polygon points="195,210 222,214 205,244" fill="#FFF7F0"/>
+    <polygon points="285,221 312,223 297,254" fill="#E6DDF1"/>
+    <polygon points="380,226 408,226 394,258" fill="#FFE6A7"/>
+    <polygon points="478,223 505,220 494,252" fill="#DDEBF1"/>
+    <polygon points="572,213 598,208 589,240" fill="#F3D5DD"/>
+    <polygon points="665,196 690,190 684,222" fill="#FFF7F0"/>
+  </g>
+  <!-- Cute notebook & iced drinks on picnic mat -->
+  <g stroke="#49363A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="335" y="486" width="128" height="74" rx="8" fill="#FFF7F0" transform="rotate(-4 399 523)"/>
+    <line x1="352" y1="508" x2="442" y2="502" stroke="#E8B6C2" stroke-width="3"/>
+    <line x1="354" y1="523" x2="432" y2="518" stroke="#E8B6C2" stroke-width="3"/>
+    <line x1="356" y1="538" x2="412" y2="534" stroke="#E8B6C2" stroke-width="3"/>
+    <!-- Milk tea cups -->
+    <path d="M262 478 L272 532 L302 532 L310 478 Z" fill="#F3D5DD"/>
+    <line x1="286" y1="454" x2="286" y2="490" stroke="#B87983" stroke-width="4"/>
+    <path d="M492 480 L500 532 L530 532 L538 480 Z" fill="#FFE6A7"/>
+    <line x1="515" y1="456" x2="515" y2="492" stroke="#B87983" stroke-width="4"/>
+  </g>
+  <!-- Tiny daisies -->
+  <g transform="translate(120 485)">
+    <circle cx="0" cy="-10" r="6" fill="#FFF7F0"/><circle cx="10" cy="0" r="6" fill="#FFF7F0"/>
+    <circle cx="0" cy="10" r="6" fill="#FFF7F0"/><circle cx="-10" cy="0" r="6" fill="#FFF7F0"/>
+    <circle cx="0" cy="0" r="5" fill="#F8D486"/>
+  </g>
+  <g transform="translate(680 495)">
+    <circle cx="0" cy="-10" r="6" fill="#FFF7F0"/><circle cx="10" cy="0" r="6" fill="#FFF7F0"/>
+    <circle cx="0" cy="10" r="6" fill="#FFF7F0"/><circle cx="-10" cy="0" r="6" fill="#FFF7F0"/>
+    <circle cx="0" cy="0" r="5" fill="#F8D486"/>
+  </g>
+  <!-- Handwritten postcard stamp text -->
+  <text x="400" y="348" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="24" fill="#49363A" opacity="0.82">Chiều nắng sân trường Nam Hòa ♡</text>
+</svg>

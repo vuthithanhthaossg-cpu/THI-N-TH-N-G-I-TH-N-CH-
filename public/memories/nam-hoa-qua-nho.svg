@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" fill="none">
+  <rect width="800" height="640" fill="#FFF3E8"/>
+  <!-- Soft pink gingham table background -->
+  <g opacity="0.35">
+    <rect x="0" y="60" width="800" height="44" fill="#F3D5DD"/>
+    <rect x="0" y="180" width="800" height="44" fill="#F3D5DD"/>
+    <rect x="0" y="300" width="800" height="44" fill="#F3D5DD"/>
+    <rect x="0" y="420" width="800" height="44" fill="#F3D5DD"/>
+    <rect x="0" y="540" width="800" height="44" fill="#F3D5DD"/>
+    <rect x="70" y="0" width="44" height="640" fill="#F3D5DD"/>
+    <rect x="210" y="0" width="44" height="640" fill="#F3D5DD"/>
+    <rect x="350" y="0" width="44" height="640" fill="#F3D5DD"/>
+    <rect x="490" y="0" width="44" height="640" fill="#F3D5DD"/>
+    <rect x="630" y="0" width="44" height="640" fill="#F3D5DD"/>
+  </g>
+  <!-- Gift paper bag with note (inspired by Reference 2 student gift packages) -->
+  <g transform="translate(150 130) rotate(-6)">
+    <rect x="0" y="48" width="210" height="240" rx="14" fill="#FFF7F0" stroke="#49363A" stroke-width="4"/>
+    <path d="M58 48 C58 0, 152 0, 152 48" stroke="#B87983" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <rect x="36" y="102" width="138" height="104" rx="8" fill="#F8E4E8" stroke="#E8B6C2" stroke-width="2.5"/>
+    <path d="M105 135 C97 123, 78 126, 78 141 C78 156, 105 174, 105 174 C105 174, 132 156, 132 141 C132 126, 113 123, 105 135 Z" fill="#E8B6C2" stroke="#49363A" stroke-width="2.5"/>
+    <text x="105" y="256" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="16" fill="#49363A">Gửi Thân Chủ ♡</text>
+  </g>
+  <!-- Cute milk carton & snack pouch -->
+  <g transform="translate(430 165) rotate(7)">
+    <rect x="14" y="54" width="128" height="186" rx="14" fill="#DDEBF1" stroke="#49363A" stroke-width="4"/>
+    <polygon points="14,58 78,12 142,58" fill="#FFF7F0" stroke="#49363A" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="34" y="100" width="88" height="62" rx="10" fill="#FFF7F0" stroke="#B87983" stroke-width="2"/>
+    <circle cx="62" cy="126" r="5" fill="#49363A"/>
+    <circle cx="94" cy="126" r="5" fill="#49363A"/>
+    <path d="M70 137 Q78 145 86 137" stroke="#49363A" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="52" cy="134" r="5" fill="#F3D5DD"/>
+    <circle cx="104" cy="134" r="5" fill="#F3D5DD"/>
+    <text x="78" y="205" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="15" fill="#49363A">SỮA TƯƠI</text>
+  </g>
+  <!-- Little handwritten sticky note taped on top -->
+  <g transform="translate(300 370) rotate(-3)">
+    <rect x="0" y="0" width="248" height="145" rx="6" fill="#FFF9DC" stroke="#49363A" stroke-width="3"/>
+    <rect x="82" y="-14" width="84" height="26" rx="3" fill="#E8B6C2" opacity="0.88" transform="rotate(3 124 0)"/>
+    <text x="124" y="58" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#49363A">Chúc thân chủ</text>
+    <text x="124" y="92" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#49363A">một ngày thật vui!</text>
+    <text x="124" y="124" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#B87983">— Thiên thần nhỏ ♡ —</text>
+  </g>
+  <!-- Decorative stars -->
+  <path d="M128 115 L133 128 L146 133 L133 138 L128 151 L123 138 L110 133 L123 128 Z" fill="#F3C776"/>
+  <path d="M645 145 L650 158 L663 163 L650 168 L645 181 L640 168 L627 163 L640 158 Z" fill="#E8B6C2"/>
+  <path d="M658 430 L662 440 L672 444 L662 448 L658 458 L654 448 L644 444 L654 440 Z" fill="#F3C776"/>
+</svg>

@@ -1,0 +1,6 @@
+{
+  "name": "THIÊN THẦN GỬI THÂN CHỦ",
+  "description": "Một góc lưu bút online dành riêng cho nhà mình Nam Hòa — nơi lưu giữ những chiếc ảnh, lời chúc và điều dễ thương.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

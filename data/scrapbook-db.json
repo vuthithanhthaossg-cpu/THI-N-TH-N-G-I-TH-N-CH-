@@ -1,0 +1,156 @@
+{
+  "walls": {
+    "nam-hoa": {
+      "wallId": "nam-hoa",
+      "title": "THIÊN THẦN GỬI THÂN CHỦ",
+      "description": "Một lời chúc, một chiếc ảnh, một chút quan tâm. Cứ gửi hết vào đây, để tụi mình cùng làm nên một góc Nam Hòa thật đáng yêu nha!",
+      "isOpen": true,
+      "createdAt": "2026-11-18T02:21:44.902Z"
+    }
+  },
+  "posts": [
+    {
+      "postId": "post-namhoa-01",
+      "wallId": "nam-hoa",
+      "senderName": "Minh Thư K48",
+      "isAnonymous": false,
+      "message": "Chúc cả nhà Nam Hòa mùa này luôn rực rỡ, thi cử qua môn vèo vèo, deadline không dí mà niềm vui cứ tự tìm tới nha!",
+      "imageUrls": [],
+      "cardStyle": "wish",
+      "paperTone": "butter",
+      "tapeStyle": "dots",
+      "tiltDeg": -1.1,
+      "createdAt": "2026-11-19T08:21:44.902Z",
+      "likesByVisitor": {
+        "seed-1": "1",
+        "seed-2": "1",
+        "seed-3": "1",
+        "seed-4": "1",
+        "seed-5": "1"
+      },
+      "likeCount": 5,
+      "isHidden": false
+    },
+    {
+      "postId": "post-namhoa-02",
+      "wallId": "nam-hoa",
+      "senderName": "Đội Truyền Thông Nam Hòa",
+      "isAnonymous": false,
+      "message": "Chiếc quà bé xíu thiên thần gửi sớm cho thân chủ nè, nhớ uống sữa giữ sức khỏe nha!",
+      "imageUrls": [
+        "/memories/nam-hoa-qua-nho.svg"
+      ],
+      "cardStyle": "memory",
+      "paperTone": "cream",
+      "tapeStyle": "striped",
+      "tiltDeg": 0.9,
+      "createdAt": "2026-11-19T12:21:44.902Z",
+      "likesByVisitor": {
+        "seed-1": "1",
+        "seed-2": "1",
+        "seed-3": "1",
+        "seed-4": "1",
+        "seed-5": "1",
+        "seed-6": "1",
+        "seed-7": "1",
+        "seed-8": "1"
+      },
+      "likeCount": 8,
+      "isHidden": false
+    },
+    {
+      "postId": "post-namhoa-03",
+      "wallId": "nam-hoa",
+      "senderName": "",
+      "isAnonymous": true,
+      "message": "Gửi thân chủ đáng yêu của mình ơi! Dạo này thấy cậu chạy hoạt động hơi mệt rồi đó, nhớ ngủ sớm trước 12 giờ nha. Sáng mai cứ mở ngăn bàn hoặc hộp thư ra, thiên thần nhỏ chuẩn bị sẵn một bất ngờ xinh xắn cho cậu rồi nè. Cố lên nha, có người luôn âm thầm cổ vũ cậu đó!",
+      "imageUrls": [],
+      "cardStyle": "secret",
+      "paperTone": "blush",
+      "tapeStyle": "dots",
+      "tiltDeg": -0.6,
+      "createdAt": "2026-11-19T16:21:44.902Z",
+      "likesByVisitor": {
+        "seed-1": "1",
+        "seed-2": "1",
+        "seed-3": "1",
+        "seed-4": "1",
+        "seed-5": "1",
+        "seed-6": "1"
+      },
+      "likeCount": 6,
+      "isHidden": false
+    },
+    {
+      "postId": "post-namhoa-04",
+      "wallId": "nam-hoa",
+      "senderName": "Khánh Linh",
+      "isAnonymous": false,
+      "message": "Cảm ơn nhà mình Nam Hòa vì đã luôn là một nơi thật ấm áp mỗi lần tụi mình quay về sau những tuần học căng thẳng.\n\nCó những buổi tối ngồi gấp từng tờ giấy note, gói từng túi bánh nhỏ xíu cho hoạt động Thiên Thần — Thân Chủ mà cười đau cả bụng. Dù sau này mỗi đứa có đi làm hay bận rộn ở đâu, mong tụi mình vẫn nhớ mãi những chiều nắng rộn ràng như thế này cùng nhau nha.\n\nThương cả nhà mình nhiều lắm luôn!",
+      "imageUrls": [],
+      "cardStyle": "letter",
+      "paperTone": "cream",
+      "tapeStyle": "clip",
+      "tiltDeg": 0.4,
+      "createdAt": "2026-11-19T20:21:44.902Z",
+      "likesByVisitor": {
+        "seed-1": "1",
+        "seed-2": "1",
+        "seed-3": "1",
+        "seed-4": "1",
+        "seed-5": "1",
+        "seed-6": "1",
+        "seed-7": "1",
+        "seed-8": "1",
+        "seed-9": "1",
+        "seed-10": "1",
+        "seed-11": "1"
+      },
+      "likeCount": 11,
+      "isHidden": false
+    },
+    {
+      "postId": "post-namhoa-05",
+      "wallId": "nam-hoa",
+      "senderName": "Hoàng Nam",
+      "isAnonymous": false,
+      "message": "Buổi chiều picnic ở sân trường — nắng đẹp, trà sữa ngon và toàn người dễ thương!",
+      "imageUrls": [
+        "/memories/nam-hoa-chieu-nang.svg"
+      ],
+      "cardStyle": "memory",
+      "paperTone": "cream",
+      "tapeStyle": "grid",
+      "tiltDeg": -0.9,
+      "createdAt": "2026-11-19T23:21:44.902Z",
+      "likesByVisitor": {
+        "seed-1": "1",
+        "seed-2": "1",
+        "seed-3": "1",
+        "seed-4": "1"
+      },
+      "likeCount": 4,
+      "isHidden": false
+    },
+    {
+      "postId": "post-namhoa-06",
+      "wallId": "nam-hoa",
+      "senderName": "Gia Hân",
+      "isAnonymous": false,
+      "message": "Ai là thiên thần của mình tuần này vậy ta? Dễ thương dữ vậy? Hôm nay nhận được hộp sữa với tờ giấy note mà vui nguyên ngày luôn á!",
+      "imageUrls": [],
+      "cardStyle": "wish",
+      "paperTone": "lavender",
+      "tapeStyle": "clip",
+      "tiltDeg": 0.8,
+      "createdAt": "2026-11-20T01:36:44.902Z",
+      "likesByVisitor": {
+        "seed-1": "1",
+        "seed-2": "1",
+        "seed-3": "1"
+      },
+      "likeCount": 3,
+      "isHidden": false
+    }
+  ]
+}

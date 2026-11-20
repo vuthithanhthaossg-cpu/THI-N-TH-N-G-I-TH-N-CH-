@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blush: #F8E4E8;
+  --color-dusty-rose: #E8B6C2;
+  --color-cream: #FFF7F0;
+  --color-soft-pink: #F3D5DD;
+  --color-lavender: #E6DDF1;
+  --color-soft-blue: #DDEBF1;
+  --color-cocoa: #49363A;
+  --color-rose-accent: #B87983;
+
+  --font-display: "Baloo 2", system-ui, sans-serif;
+  --font-sans: "Nunito", system-ui, -apple-system, sans-serif;
+  --font-hand: "Patrick Hand", cursive, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: #49363A;
+    background-color: #F8E4E8;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #F8E4E8;
+    background-image:
+      radial-gradient(rgba(184, 121, 131, 0.14) 1px, transparent 1px),
+      radial-gradient(rgba(232, 182, 194, 0.25) 1px, transparent 1px);
+    background-size: 26px 26px;
+    background-position: 0 0, 13px 13px;
+  }
+
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+}
+
+/* Signature outlined pastel heading inspired by Reference 1 */
+.angel-title-outline {
+  font-family: var(--font-display);
+  color: #F7B8C8;
+  -webkit-text-stroke: 2px #49363A;
+  paint-order: stroke fill;
+  text-shadow:
+    0 3px 0 #49363A,
+    0 6px 14px rgba(184, 121, 131, 0.26);
+}
+
+.angel-heading-soft {
+  font-family: var(--font-display);
+  color: #49363A;
+  text-shadow: 0 2px 0 rgba(232, 182, 194, 0.65);
+}
+
+/* Subtle ruled stationery lines for Love Letter cards */
+.stationery-lined {
+  background-color: #FFF7F0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 29px,
+    rgba(184, 121, 131, 0.17) 29px,
+    rgba(184, 121, 131, 0.17) 30px
+  );
+  background-position: 0 8px;
+}
+
+/* Subtle tactile paper shadow */
+.scrapbook-shadow {
+  box-shadow:
+    0 6px 18px -6px rgba(73, 54, 58, 0.12),
+    0 2px 5px -2px rgba(73, 54, 58, 0.08);
+}
+
+.scrapbook-shadow-hover {
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scrapbook-shadow-hover:hover {
+  box-shadow:
+    0 14px 28px -10px rgba(73, 54, 58, 0.17),
+    0 4px 10px -4px rgba(73, 54, 58, 0.1);
+}
+
+/* Washi tape textures */
+.washi-striped {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.45) 0px,
+    rgba(255, 255, 255, 0.45) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+.washi-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.72) 1.5px, transparent 1.5px);
+  background-size: 9px 9px;
+}
+
+.washi-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
